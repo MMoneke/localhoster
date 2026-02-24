@@ -22,7 +22,7 @@
 ### 1. Requirements
 * **Python 3.6+**
 * Works on **Windows, macOS, and Linux**.
-* Also works on **Android*** using e.g. Pydroid 3 or Termux.
+* Also works on **Android** using e.g. Pydroid 3 or Termux.
 
 ### 2. Run the Script
 Simply execute the script using Python:
