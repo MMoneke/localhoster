@@ -29,3 +29,20 @@ Simply execute the script using Python:
 
 ```bash
 python3 localhoster.py
+```
+
+### 3. Usage & Navigation
+
+LocalHoster follows a two-step process: selecting your directory via terminal and then hosting it for your local network.
+
+#### Step 1: Terminal Navigation
+After launching the script, you are in an interactive shell mode. You can navigate your file system before the server goes live:
+* **Browse:** Use the `cd <path>` command to move into the directory you want to host.
+* **List:** The script automatically displays the current folder's content (like `ls -alh` or `dir`) so you always know where you are.
+* **Start Hosting:** Once you are in the correct directory, type `host`, `run`, or simply press **Enter**.
+
+#### Step 2: Accessing the Host
+Once the server is active, it will display a status block with your local network details:
+* **Local URL:** You will see an address like `http://192.168.x.x:8000`.
+* **Cross-Device Access:** Open this URL in the browser of **any device** (Smartphone, Tablet, or another Laptop) that is connected to the same Wi-Fi/LAN network.
+* **Control:** Use the Web UI to browse files, or press `CTRL+C` in your terminal to stop the server and return to the navigation mode.
