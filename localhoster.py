@@ -1,5 +1,6 @@
 import http.server
 import socketserver
+from socketserver import ThreadingMixIn
 import os
 import socket
 import urllib.parse
@@ -11,7 +12,6 @@ from datetime import datetime
 def get_emoji(emoji_name, fallback=""):
     try:
         if sys.platform == "win32":
-            # Check if we are in a modern terminal or if forced to skip
             if "TERM" in os.environ or os.environ.get("WT_SESSION"):
                 return emoji_name
             return fallback
@@ -150,10 +150,12 @@ class SlimLogger(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
         return io.BytesIO(encoded)
 
-# Silent disconnect to avoid spam logs
-class SilentServer(socketserver.TCPServer):
+# Multi-threaded server to allow simultaneous access from multiple devices
+class SilentServer(ThreadingMixIn, socketserver.TCPServer):
     allow_reuse_address = True
-    def handle_error(self, request, client_address): pass
+    daemon_threads = True  # Terminate threads when main program exits
+    def handle_error(self, request, client_address): 
+        pass
 
 # Get local ip
 def get_local_ip():
